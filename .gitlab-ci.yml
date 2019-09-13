@@ -21,3 +21,16 @@ build:
     - build 
   only:
     - master # Only run on master branch
+
+deploy_staging:
+  image: python:latest
+  stage: deploy_staging
+  environment: staging
+  variables:
+    GIT_STRATEGY: none
+    GIT_CHECKOUT: "false"
+  script:
+  - pip install awscli
+  - aws s3 cp ./build s3://staging-jr-test --recursive
+  only:
+  - master

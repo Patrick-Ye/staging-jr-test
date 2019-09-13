@@ -42,7 +42,7 @@ deploy_prod:
   image: python:latest
   stage: deploy_prod
   environment: production
-  when:manual
+  when: manual
   variables:
     GIT_STRATEGY: none
     GIT_CHECKOUT: "false"
